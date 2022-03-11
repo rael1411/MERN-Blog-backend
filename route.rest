@@ -1,0 +1,61 @@
+GET http://localhost:5000/posts
+
+###
+
+get http://localhost:5000/posts/620e6450366ac604c383d330
+
+###
+GET http://localhost:5000/posts/620e6450366ac604c383d330/comments
+
+###
+POST http://localhost:5000/posts/62138127fae382acd41b5bec/comments
+Content-Type: application/json
+
+{
+    "email": "sample@gmail.com",
+    "content": "This is a sample comment talking about this article ",
+    "post": "62138127fae382acd41b5bec"
+}
+
+###
+GET http://localhost:5000/posts/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIwZTI1NmQxMzRmMzE4MmU2OGY1N2Q5IiwiaWF0IjoxNjQ1MTA5NzMwfQ.biJFYt6IlvAfvJ7YH2D9mrWvvYjUQv3i-qlu3KTZDgc
+
+###
+
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "username": "cane1",
+    "password": "blabla",
+    "passwordConfirmation": "blabla"
+}
+
+###
+
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    "username": "cane1",
+    "password": "blabla"
+}
+
+###
+POST http://localhost:5000/posts/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIwZTI1NmQxMzRmMzE4MmU2OGY1N2Q5IiwiaWF0IjoxNjQ1MTA5NzMwfQ.biJFYt6IlvAfvJ7YH2D9mrWvvYjUQv3i-qlu3KTZDgc
+
+{
+    "title": "This is a post title",
+    "text": "
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac suscipit justo. Aliquam erat volutpat. Praesent odio ex, rutrum vitae cursus at, facilisis ut mauris. Sed arcu arcu, volutpat nec lacus vel, hendrerit luctus augue. Sed vel scelerisque magna, non maximus sem. Nulla fringilla tincidunt velit. Sed varius, metus bibendum pulvinar porta, elit tortor commodo urna, malesuada maximus dolor lectus quis enim. Donec eleifend sed odio a tincidunt.
+
+Phasellus venenatis dignissim congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut et augue id dolor venenatis aliquam lobortis vitae lorem. Donec lobortis dolor et sapien porta, vel iaculis erat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec tincidunt ante et posuere eleifend. Curabitur in neque pretium, viverra arcu sit amet, accumsan urna. Nulla a rhoncus enim. Praesent eget sapien faucibus, euismod ex id, ullamcorper diam. Nam cursus vestibulum felis sit amet convallis. Donec congue nisl et risus lacinia aliquam. Praesent fermentum diam libero, et consequat augue laoreet at. Mauris non nisl congue, mollis turpis ut, dapibus ipsum. Cras lobortis diam elit, eu tempus turpis euismod sit amet. Nunc egestas pellentesque lacus, ac pulvinar augue vehicula convallis. Fusce gravida dui a velit viverra, pretium rhoncus erat pharetra.
+
+Nunc elementum nulla sed nisl blandit pretium. Proin ut tortor dui. Fusce nec felis elit. Nam eu massa lobortis justo porttitor finibus ut vel risus. In hac habitasse platea dictumst. Vivamus in commodo diam, et lacinia lorem. Aliquam fermentum justo arcu, at commodo nunc aliquet sed. Aliquam interdum purus nec malesuada ultricies. Aliquam blandit risus nec lectus sagittis, ac gravida neque lobortis.",
+    "published": "yes"
+}
+
