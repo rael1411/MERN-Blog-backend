@@ -20,6 +20,8 @@ router.delete("/:id", getPost, postController.post_delete);
 
 //getting all the comments on a post
 router.get("/:postId/comments", commentController.comment_list)
+//getting the number of comments on a post
+router.get("/:postId/comment-count", commentController.comment_count)
 //adding a comment to a post
 router.post("/:postId/comments", commentController.comment_create)
 //getting a comment

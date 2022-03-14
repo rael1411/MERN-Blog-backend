@@ -13,6 +13,11 @@ exports.comment_list = async function (req, res) {
     res.status(500).json({ message: err.message });
   }
 };
+
+exports.comment_count = async function(req,res){
+    const commentCount =  await Comment.countDocuments({post: req.params.postId})
+    res.json({count: commentCount})
+}
 //POSTING A COMMENT
 exports.comment_create = [
   /*     body("email").custom((value => {
