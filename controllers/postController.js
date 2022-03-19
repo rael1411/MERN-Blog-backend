@@ -5,9 +5,11 @@ const jwt = require("jsonwebtoken");
 
 //getting all the PUBLISHED posts
 exports.published_post_list = async function (req, res) {
-  res.set('Access-Control-Allow-Origin', '*');
+  res.set("Access-Control-Allow-Origin", "*");
   try {
-    const posts = await Post.find({ published: true }).populate("user").sort({"timestamp": -1});
+    const posts = await Post.find({ published: true })
+      .populate("user")
+      .sort({ timestamp: -1 });
     res.json(posts);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -16,17 +18,23 @@ exports.published_post_list = async function (req, res) {
 
 //getting all the  posts
 exports.complete_post_list = async function (req, res) {
-  try {
-    const posts = await Post.find({}).populate("user");
-    res.json(posts);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  jwt.verify(req.token, process.env.SECRET_KEY, async (err, authData) => {
+    if (err) {
+      res.sendStatus(403);
+    } else {
+      try {
+        const posts = await Post.find({}).populate("user");
+        res.json(posts);
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+    }
+  });
 };
 
 //getting one post
 exports.post_detail = async function (req, res) {
-  res.set('Access-Control-Allow-Origin', '*');
+  res.set("Access-Control-Allow-Origin", "*");
   res.json(res.post);
 };
 //creating a post
@@ -45,10 +53,9 @@ exports.post_create = [
           text: req.body.text,
           user: user,
           published: req.body.published,
-          timestamp: ""
+          timestamp: "",
         });
         if (req.body.published) {
-          console.log("test")
           post.timestamp = Date.now();
         }
         if (!errors.isEmpty()) {
@@ -79,20 +86,33 @@ exports.post_update = async function (req, res) {
     res.post.timestamp = Date.now();
     res.post.editTimestamp = "";
   }
-
-  try {
-    const updatedPost = await res.post.save();
-    res.json(updatedPost);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  jwt.verify(req.token, process.env.SECRET_KEY, async (err, authData) => {
+    if (err) {
+      res.sendStatus(403)
+    }
+    else {
+      try {
+        const updatedPost = await res.post.save();
+        res.json(updatedPost);
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+    }
+  })
+  
 };
 //deleting a post
 exports.post_delete = async function (req, res) {
-  try {
-    await res.post.remove();
-    res.json({ message: "post removed" });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  jwt.verify(req.token, process.env.SECRET_KEY, async (err, authData) => {
+    if (err) {
+      res.sendStatus(403)
+    } else {
+      try {
+        await res.post.remove();
+        res.json({ message: "post removed" });
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+    }
+  })
 };

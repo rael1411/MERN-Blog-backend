@@ -10,19 +10,10 @@ GET http://localhost:5000/posts/62272ecd1a7bde5631718ee7/comments
 ###
 GET http://localhost:5000/posts/62272ecd1a7bde5631718ee7/comment-count
 
-###
-POST http://localhost:5000/posts/62138127fae382acd41b5bec/comments
-Content-Type: application/json
-
-{
-    "email": "sample@gmail.com",
-    "content": "This is a sample comment talking about this article ",
-    "post": "62138127fae382acd41b5bec"
-}
 
 ###
 GET http://localhost:5000/posts/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIwZTI1NmQxMzRmMzE4MmU2OGY1N2Q5IiwiaWF0IjoxNjQ1MTA5NzMwfQ.biJFYt6IlvAfvJ7YH2D9mrWvvYjUQv3i-qlu3KTZDgc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5CI6IkpXVCJ9.eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiIsImlhdCI6MTY0NzcwNDYwMX0.RvOlnwb0h4o4zgPJhGWTVeDLv7YGeVzYphzK5xM6-SU
 
 ###
 
@@ -30,7 +21,7 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "username": "cane1",
+    "username": "cane2",
     "password": "blabla",
     "passwordConfirmation": "blabla"
 }
@@ -41,7 +32,7 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
-    "username": "cane1",
+    "username": "cane2",
     "password": "blabla"
 }
 

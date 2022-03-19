@@ -78,7 +78,9 @@ exports.user_login = [
         if (!validPass) {
           res.status(401).json({ message: "Invalid password" });
         } else {
-          jwt.sign({ user: user._id }, process.env.SECRET_KEY, (err, token) => {
+          //user is found and password is correct, returning the token
+          jwt.sign({ user: user._id, username: req.body.username }, process.env.SECRET_KEY, (err, token) => {
+            
             res.json({ token });
           });
         }

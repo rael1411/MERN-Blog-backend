@@ -2,22 +2,27 @@ const express = require("express");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 const { body, validationResult, check } = require("express-validator");
+const jwt = require("jsonwebtoken");
 
 //GETTING ALL COMMENTS FROM AN ARTICLE
 exports.comment_list = async function (req, res) {
-  res.set('Access-Control-Allow-Origin', '*');
+  res.set("Access-Control-Allow-Origin", "*");
   try {
-    const comments = await Comment.find({post: req.params.postId}).sort({"timestamp" : -1});
+    const comments = await Comment.find({ post: req.params.postId }).sort({
+      timestamp: -1,
+    });
     res.json(comments);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
 
-exports.comment_count = async function(req,res){
-    const commentCount =  await Comment.countDocuments({post: req.params.postId})
-    res.json({count: commentCount})
-}
+exports.comment_count = async function (req, res) {
+  const commentCount = await Comment.countDocuments({
+    post: req.params.postId,
+  });
+  res.json({ count: commentCount });
+};
 //POSTING A COMMENT
 exports.comment_create = [
   /*     body("email").custom((value => {
@@ -31,8 +36,7 @@ exports.comment_create = [
     .trim()
     .isLength({ min: 5 }),
   async (req, res) => {
-    console.log(req.body)
-    res.set('Access-Control-Allow-Origin', '*');
+    res.set("Access-Control-Allow-Origin", "*");
     const errors = validationResult(req);
     let comment = new Comment({
       email: req.body.email,
@@ -59,10 +63,16 @@ exports.comment_details = function (req, res) {
 };
 //delete comment
 exports.comment_delete = async function (req, res) {
-  try {
-    await res.comment.remove();
-    res.json({ message: "comment removed" });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  jwt.verify(req.token, process.env.SECRET_KEY, async (err, authData) => {
+    if (err) {
+      res.sendStatus(403);
+    } else {
+      try {
+        await res.comment.remove();
+        res.json({ message: "comment removed" });
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+    }
+  });
 };
