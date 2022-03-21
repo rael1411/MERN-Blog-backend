@@ -12,6 +12,7 @@ app.use(cors())
 //adding routers
 const indexRouter = require("./routes/index");
 const postsRouter = require("./routes/posts");
+const refreshRouter = require("./routes/refresh")
 
 //setting database via mongoose
 
@@ -23,6 +24,7 @@ db.once('open', () => console.log('Connected to Database'))
 //ROUTES
 app.use("/", indexRouter);
 app.use("/posts", postsRouter)
+app.use('/refresh', refreshRouter);
 
 
 const PORT = process.env.PORT || 5000;

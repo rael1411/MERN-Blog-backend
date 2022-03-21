@@ -71,18 +71,37 @@ exports.user_login = [
         res.status(404).json({ message: "User does not exist" });
       } else {
         //checking password
-        const validPass = await bcrypt.compare(
-          req.body.password,
-          user.password
-        );
-        if (!validPass) {
+        const match = await bcrypt.compare(req.body.password, user.password);
+        if (!match) {
           res.status(401).json({ message: "Invalid password" });
         } else {
           //user is found and password is correct, returning the token
-          jwt.sign({ user: user._id, username: req.body.username }, process.env.SECRET_KEY, (err, token) => {
-            
-            res.json({ token });
-          });
+          const accessToken = jwt.sign(
+            {
+              UserInfo: {
+                user: user._id,
+                username: user.username,
+              },
+            },
+            process.env.SECRET_KEY,
+            { expiresIn: "30s"}
+          );
+
+          const refreshToken = jwt.sign(
+            {
+              UserInfo: {
+                user: user._id,
+                username: user.username,
+              },
+            },
+            process.env.REFRESH_TOKEN_SECRET,
+            { expiresIn: "1d"}
+          );
+          user.refreshToken = refreshToken;
+          const result = await user.save();
+          
+          res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+          res.json({accessToken});
         }
       }
     }

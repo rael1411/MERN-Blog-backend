@@ -13,7 +13,7 @@ GET http://localhost:5000/posts/62272ecd1a7bde5631718ee7/comment-count
 
 ###
 GET http://localhost:5000/posts/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5CI6IkpXVCJ9.eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiIsImlhdCI6MTY0NzcwNDYwMX0.RvOlnwb0h4o4zgPJhGWTVeDLv7YGeVzYphzK5xM6-SU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiIsImlhdCI6MTY0Nzg1MTQ1NX0.737DvWrOERkVwQ24-MI5PBRySSC2s3GH6-2dd5pHW6o
 
 ###
 
@@ -39,7 +39,7 @@ Content-Type: application/json
 ###
 POST http://localhost:5000/posts/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIwZTI1NmQxMzRmMzE4MmU2OGY1N2Q5IiwiaWF0IjoxNjQ1MTA5NzMwfQ.biJFYt6IlvAfvJ7YH2D9mrWvvYjUQv3i-qlu3KTZDgc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiIsImlhdCI6MTY0Nzg1MTQ1NX0.737DvWrOERkVwQ24-MI5PBRySSC2s3GH6-2dd5pHW6o
 
 {
     "title": "This is a post title",
