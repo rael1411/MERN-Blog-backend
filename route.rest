@@ -13,8 +13,7 @@ GET http://localhost:5000/posts/62272ecd1a7bde5631718ee7/comment-count
 
 ###
 GET http://localhost:5000/posts/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiIsImlhdCI6MTY0Nzg1MTQ1NX0.737DvWrOERkVwQ24-MI5PBRySSC2s3GH6-2dd5pHW6o
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiJ9LCJpYXQiOjE2NDc4NzM1NDEsImV4cCI6MTY0Nzg3MzU3MX0.zLyS-EU8stowaEJzkKshtmxgl83Zj4HauzLqQWKSpS8
 ###
 
 POST http://localhost:5000/users
@@ -25,6 +24,13 @@ Content-Type: application/json
     "password": "blabla",
     "passwordConfirmation": "blabla"
 }
+
+###
+
+GET http://localhost:5000/refresh
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiJ9LCJpYXQiOjE2NDc4NzM5ODEsImV4cCI6MTY0Nzg3NDAxMX0.vjmqaalOrIdU0z1OljpcZ75nXs5ePA6eqEjhMqT2gxk
+
 
 ###
 

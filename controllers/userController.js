@@ -84,7 +84,7 @@ exports.user_login = [
               },
             },
             process.env.SECRET_KEY,
-            { expiresIn: "30s"}
+            { expiresIn: "5m"}
           );
 
           const refreshToken = jwt.sign(
@@ -107,3 +107,30 @@ exports.user_login = [
     }
   },
 ];
+
+exports.user_logout = async (req, res) => {
+  console.log(req.cookies)
+  //takes care of refresh token
+  //still need to delete accesstoken on the client
+  const cookies = req.cookies;
+  if (!cookies?.jwt) {return res.sendStatus(204);} 
+  const refreshToken = cookies.jwt;
+
+  // look up refreshtoken in the db
+  const foundUser = await User.findOne({ refreshToken }).exec();
+  if (!foundUser) {
+    res.clearCookie("jwt")
+    return res.sendStatus(204);
+  }
+  console.log(foundUser)
+  //delete refreshtoken
+
+  User.findByIdAndUpdate(foundUser._id, {refreshToken: ""}, (err, result) => {
+    if (err) {
+      res.json({err})
+    }
+    else {
+      res.json({msg: "success!"})
+    }
+  })
+};

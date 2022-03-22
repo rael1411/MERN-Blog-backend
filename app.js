@@ -3,11 +3,19 @@ require("dotenv").config()
 const express = require("express");
 const mongoose = require("mongoose")
 const cors = require("cors");
+const corsOptions = require("./config/corsOptions")
+const cookieParser = require("cookie-parser")
+
 
 const app = express();
 
 app.use (express.json())
-app.use(cors())
+//cross origin resource sharing
+app.use(cors(corsOptions))
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+
+//midddleware for cookies
+app.use(cookieParser());
 
 //adding routers
 const indexRouter = require("./routes/index");
