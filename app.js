@@ -5,11 +5,16 @@ const mongoose = require("mongoose")
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions")
 const cookieParser = require("cookie-parser")
+const credentials = require("./middleware/credentials")
 
 
 const app = express();
 
 app.use (express.json())
+
+//handle credentials check before cors
+app.use(credentials)
+
 //cross origin resource sharing
 app.use(cors(corsOptions))
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));

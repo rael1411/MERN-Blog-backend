@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 
 //GETTING ALL COMMENTS FROM AN ARTICLE
 exports.comment_list = async function (req, res) {
-  res.set("Access-Control-Allow-Origin", "*");
   try {
     const comments = await Comment.find({ post: req.params.postId }).sort({
       timestamp: -1,
@@ -36,7 +35,6 @@ exports.comment_create = [
     .trim()
     .isLength({ min: 5 }),
   async (req, res) => {
-    res.set("Access-Control-Allow-Origin", "*");
     const errors = validationResult(req);
     let comment = new Comment({
       email: req.body.email,

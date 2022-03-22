@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 
 //getting all the PUBLISHED posts
 exports.published_post_list = async function (req, res) {
-  res.set("Access-Control-Allow-Origin", "*");
   try {
     const posts = await Post.find({ published: true })
       .populate("user")
@@ -34,7 +33,6 @@ exports.complete_post_list = async function (req, res) {
 
 //getting one post
 exports.post_detail = async function (req, res) {
-  res.set("Access-Control-Allow-Origin", "*");
   res.json(res.post);
 };
 //creating a post

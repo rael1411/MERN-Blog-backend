@@ -100,7 +100,7 @@ exports.user_login = [
           user.refreshToken = refreshToken;
           const result = await user.save();
           
-          res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+          res.cookie('jwt', refreshToken, { secure: true, httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
           res.json({accessToken});
         }
       }
@@ -122,7 +122,7 @@ exports.user_logout = async (req, res) => {
     res.clearCookie("jwt")
     return res.sendStatus(204);
   }
-  console.log(foundUser)
+
   //delete refreshtoken
 
   User.findByIdAndUpdate(foundUser._id, {refreshToken: ""}, (err, result) => {
