@@ -109,7 +109,6 @@ exports.user_login = [
 ];
 
 exports.user_logout = async (req, res) => {
-  console.log(req.cookies)
   //takes care of refresh token
   //still need to delete accesstoken on the client
   const cookies = req.cookies;

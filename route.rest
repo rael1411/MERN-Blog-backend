@@ -29,7 +29,7 @@ Content-Type: application/json
 
 GET http://localhost:5000/refresh
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiJ9LCJpYXQiOjE2NDc4NzM5ODEsImV4cCI6MTY0Nzg3NDAxMX0.vjmqaalOrIdU0z1OljpcZ75nXs5ePA6eqEjhMqT2gxk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiJ9LCJpYXQiOjE2NDc5NDMxMTYsImV4cCI6MTY0Nzk0MzQxNn0.JS6h6CLGt3ylxG_TcXmtzI-Eh6uYIGX_7oSbUxPU47Y
 
 
 ###
@@ -43,6 +43,11 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:5000/users/logout
+
+
+###
+
 POST http://localhost:5000/posts/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiIsImlhdCI6MTY0Nzg1MTQ1NX0.737DvWrOERkVwQ24-MI5PBRySSC2s3GH6-2dd5pHW6o
@@ -50,6 +55,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIzNWZhM
 {
     "title": "This is a post title",
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac suscipit justo. Aliquam erat volutpat. Praesent odio ex, rutrum vitae cursus at, facilisis ut mauris. Sed arcu arcu, volutpat nec lacus vel, hendrerit luctus augue. Sed vel scelerisque magna, non maximus sem. Nulla fringilla tincidunt velit. Sed varius, metus bibendum pulvinar porta, elit tortor commodo urna, malesuada maximus dolor lectus quis enim. Donec eleifend sed odio a tincidunt. Phasellus venenatis dignissim congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut et augue id dolor venenatis aliquam lobortis vitae lorem. Donec lobortis dolor et sapien porta, vel iaculis erat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec tincidunt ante et posuere eleifend. Curabitur in neque pretium, viverra arcu sit amet, accumsan urna. Nulla a rhoncus enim. Praesent eget sapien faucibus, euismod ex id, ullamcorper diam. Nam cursus vestibulum felis sit amet convallis. Donec congue nisl et risus lacinia aliquam. Praesent fermentum diam libero, et consequat augue laoreet at. Mauris non nisl congue, mollis turpis ut, dapibus ipsum. Cras lobortis diam elit, eu tempus turpis euismod sit amet. Nunc egestas pellentesque lacus, ac pulvinar augue vehicula convallis. Fusce gravida dui a velit viverra, pretium rhoncus erat pharetra.",
-    "published": "yes"
+    "published": false
 }
 

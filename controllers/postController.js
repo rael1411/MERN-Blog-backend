@@ -31,6 +31,21 @@ exports.complete_post_list = async function (req, res) {
   });
 };
 
+//get unpublished
+exports.unpublished_post_list = async function (req, res) {
+  jwt.verify(req.token, process.env.SECRET_KEY, async (err, authData) => {
+    if (err) {
+      res.sendStatus(403);
+    } else {
+      try {
+        const posts = await Post.find({published: false}).populate("user");
+        res.json(posts);
+      } catch (err) {
+        res.status(500).json({ message: err.message });
+      }
+    }
+  });
+};
 //getting one post
 exports.post_detail = async function (req, res) {
   res.json(res.post);

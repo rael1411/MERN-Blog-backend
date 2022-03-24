@@ -9,6 +9,8 @@ const commentController = require("../controllers/commentController")
 router.get("/", postController.published_post_list);
 //getting all the posts
 router.get("/all", verifyToken, postController.complete_post_list);
+//getting all unpublished posts
+router.get("/unpublished", verifyToken, postController.unpublished_post_list)
 //getting one post
 router.get("/:id", getPost, postController.post_detail);
 //creating a post

@@ -4,7 +4,6 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
 exports.handleRefreshToken = async (req, res) => {
-  console.log(req.cookies)
   const cookies = req.cookies;
   if (!cookies?.jwt) {return res.sendStatus(401);}
   const refreshToken = cookies.jwt;
