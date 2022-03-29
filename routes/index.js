@@ -8,6 +8,6 @@ router.get("/", (req, res) => {
 
 router.post("/users", userController.user_create)
 router.post("/users/login", userController.user_login)
-router.post("/users/logout", userController.user_logout)
+router.get("/users/logout", userController.user_logout)
 
 module.exports = router;
