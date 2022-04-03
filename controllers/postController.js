@@ -38,7 +38,7 @@ exports.unpublished_post_list = async function (req, res) {
       res.sendStatus(403);
     } else {
       try {
-        const posts = await Post.find({published: false}).populate("user");
+        const posts = await Post.find({ published: false }).populate("user");
         res.json(posts);
       } catch (err) {
         res.status(500).json({ message: err.message });
@@ -61,10 +61,10 @@ exports.post_create = [
       } else {
         const errors = validationResult(req);
         let user = jwt.decode(req.token).user;
+
         if (user === undefined) {
-          user = jwt.decode(req.token).UserInfo.user
+          user = jwt.decode(req.token).UserInfo.user;
         }
-        console.log(user)
         let post = new Post({
           title: req.body.title,
           text: req.body.text,
@@ -105,9 +105,8 @@ exports.post_update = async function (req, res) {
   }
   jwt.verify(req.token, process.env.SECRET_KEY, async (err, authData) => {
     if (err) {
-      res.sendStatus(403)
-    }
-    else {
+      res.sendStatus(403);
+    } else {
       try {
         const updatedPost = await res.post.save();
         res.json(updatedPost);
@@ -115,14 +114,14 @@ exports.post_update = async function (req, res) {
         res.status(500).json({ message: err.message });
       }
     }
-  })
-  
+  });
 };
 //deleting a post
 exports.post_delete = async function (req, res) {
   jwt.verify(req.token, process.env.SECRET_KEY, async (err, authData) => {
     if (err) {
-      res.sendStatus(403)
+      console.log(err)
+      res.sendStatus(403);
     } else {
       try {
         await res.post.remove();
@@ -131,5 +130,5 @@ exports.post_delete = async function (req, res) {
         res.status(500).json({ message: err.message });
       }
     }
-  })
+  });
 };

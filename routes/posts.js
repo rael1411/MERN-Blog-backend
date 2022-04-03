@@ -18,7 +18,7 @@ router.post("/", verifyToken, postController.post_create);
 //updating a post
 router.patch("/:id", getPost, postController.post_update);
 //deleting a post
-router.delete("/:id", getPost, postController.post_delete);
+router.delete("/:id", getPost, verifyToken, postController.post_delete);
 
 //getting all the comments on a post
 router.get("/:postId/comments", commentController.comment_list)
@@ -29,7 +29,7 @@ router.post("/:postId/comments", commentController.comment_create)
 //getting a comment
 router.get("/:postId/comments/:id", getComment, commentController.comment_details)
 //deleting a comment
-router.delete("/:postId/comments/:id", getComment, commentController.comment_delete)
+router.delete("/:postId/comments/:id", getComment, verifyToken, commentController.comment_delete)
 
 //MIDDLEWARE TO GET ONE POST
 async function getPost(req, res, next) {
