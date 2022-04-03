@@ -25,6 +25,6 @@ exports.handleRefreshToken = async (req, res) => {
       { expiresIn: "5m" }
     );
 
-    res.json({ accessToken });
+    res.json({ accessToken, user: decoded._id});
   });
 };

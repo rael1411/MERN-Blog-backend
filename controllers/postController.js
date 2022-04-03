@@ -61,6 +61,10 @@ exports.post_create = [
       } else {
         const errors = validationResult(req);
         let user = jwt.decode(req.token).user;
+        if (user === undefined) {
+          user = jwt.decode(req.token).UserInfo.user
+        }
+        console.log(user)
         let post = new Post({
           title: req.body.title,
           text: req.body.text,
