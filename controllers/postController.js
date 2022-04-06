@@ -1,5 +1,6 @@
 require("dotenv").config();
 const Post = require("../models/Post");
+const Comment = require("../models/Comment")
 const { body, validationResult, check } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
@@ -124,6 +125,13 @@ exports.post_delete = async function (req, res) {
       res.sendStatus(403);
     } else {
       try {
+        //deleting comments associated with a post that is getting deleted
+        try {
+          await Comment.deleteMany({post: res.post._id });
+        }
+        catch (err){
+          (err)
+        }
         await res.post.remove();
         res.json({ message: "post removed" });
       } catch (err) {
