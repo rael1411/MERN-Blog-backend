@@ -16,7 +16,7 @@ router.get("/:id", getPost, postController.post_detail);
 //creating a post
 router.post("/", verifyToken, postController.post_create);
 //updating a post
-router.patch("/:id", getPost, postController.post_update);
+router.patch("/:id", getPost, verifyToken, postController.post_update);
 //deleting a post
 router.delete("/:id", getPost, verifyToken, postController.post_delete);
 
@@ -42,7 +42,9 @@ async function getPost(req, res, next) {
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
+
   res.post = post;
+  
   next();
 }
 //MIDDLEWARE TO GET ONE COMMENT

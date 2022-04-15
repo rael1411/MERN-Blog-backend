@@ -12,8 +12,14 @@ GET http://localhost:5000/posts/62272ecd1a7bde5631718ee7/comment-count
 
 
 ###
-GET http://localhost:5000/posts/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiJ9LCJpYXQiOjE2NDc4NzM1NDEsImV4cCI6MTY0Nzg3MzU3MX0.zLyS-EU8stowaEJzkKshtmxgl83Zj4HauzLqQWKSpS8
+PATCH http://localhost:5000/posts/6249e2eae2923344016cdff3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJ1c2VyIjoiNjIzNWZhMGJlZjM5OTZhNWI0Y2NhMGI2IiwidXNlcm5hbWUiOiJjYW5lMiJ9LCJpYXQiOjE2NDkyNjQ5NjUsImV4cCI6MTY0OTI2NTI2NX0.kuLui2UIHOtzFlhunfA0wWWnA0rh4395_hSCkPvXv3Y
+Content-Type: application/json
+
+{
+    "text": "dlaskjfldksajfklsadjfklasdjfklasdjflkadsjfkl"
+    "published": "true"
+}
 ###
 
 POST http://localhost:5000/users

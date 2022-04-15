@@ -104,6 +104,7 @@ exports.post_update = async function (req, res) {
     res.post.timestamp = Date.now();
     res.post.editTimestamp = "";
   }
+  
   jwt.verify(req.token, process.env.SECRET_KEY, async (err, authData) => {
     if (err) {
       res.sendStatus(403);
